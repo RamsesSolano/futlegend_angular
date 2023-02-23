@@ -7,11 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.development';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
 import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
 import { USE_DEVICE_LANGUAGE } from '@angular/fire/compat/auth';
 import { LANGUAGE_CODE } from '@angular/fire/compat/auth';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { TENANT_ID } from '@angular/fire/compat/auth';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,8 +23,8 @@ import { TENANT_ID } from '@angular/fire/compat/auth';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     provideFirebaseApp(() => initializeApp( environment.firebaseConfig )),
+    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
 
   ],
@@ -31,6 +34,7 @@ import { TENANT_ID } from '@angular/fire/compat/auth';
     { provide: LANGUAGE_CODE, useValue: 'fr' },
     { provide: PERSISTENCE, useValue: 'session' },
     { provide: TENANT_ID, useValue: 'tenant-id-app-one' },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent]
 })
