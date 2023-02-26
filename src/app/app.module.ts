@@ -33,7 +33,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     { provide: USE_DEVICE_LANGUAGE, useValue: true },
     { provide: LANGUAGE_CODE, useValue: 'fr' },
     { provide: PERSISTENCE, useValue: 'session' },
-    { provide: TENANT_ID, useValue: 'tenant-id-app-one' },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent]
