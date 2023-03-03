@@ -4,7 +4,7 @@ import { collection } from '@firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/compat/app';
-
+import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +14,11 @@ export class LoginComponent implements OnInit {
 
   collectionTest: any;
   collectionDataTest: Observable<DocumentData[]>;
+  loginForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
+  userField!: FormControl;
 
   constructor(
     firestore: Firestore,
@@ -21,6 +26,7 @@ export class LoginComponent implements OnInit {
     ){
     this.collectionTest = collection( firestore, "Field" );
     this.collectionDataTest = new Observable< DocumentData[] >;
+
   }
   ngOnInit(): void {
 
@@ -29,6 +35,10 @@ export class LoginComponent implements OnInit {
     this.collectionDataTest.subscribe( dataInformation => {
       console.log( dataInformation );
     } );
+
+  }
+
+  loginGoogle() {
 
   }
 

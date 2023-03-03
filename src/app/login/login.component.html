@@ -1,6 +1,12 @@
 <div class="container">
 
 
+  <form [formGroup]="loginForm">
+
+  </form>
+
+    <!--
+
   <div *ngIf="auth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button (click)="logout()">Logout</button>
@@ -10,7 +16,7 @@
     <button (click)="login()">Login with Google</button>
   </ng-template>
 
-    <!--
+
   <div class="row">
     <div class="col">
       <h1>

@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.development';
+import { CommonsModule } from '../commons/commons.module';
 
 
 
@@ -15,6 +16,7 @@ import { environment } from 'src/environments/environment.development';
   imports: [
     CommonModule,
     LoginRoutingModule,
+    CommonsModule,
     provideFirebaseApp(() => initializeApp( environment.firebaseConfig )),
     provideFirestore(() => getFirestore()),
   ]
