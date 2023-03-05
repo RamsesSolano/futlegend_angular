@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('')
   });
-  userField!: FormControl;
 
   constructor(
     firestore: Firestore,
@@ -29,8 +28,6 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
-
     this.collectionDataTest = collectionData( this.collectionTest );
     this.collectionDataTest.subscribe( dataInformation => {
       console.log( dataInformation );
@@ -39,11 +36,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
-
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    console.log( this.loginForm.value );
   }
   logout() {
     this.auth.signOut();
